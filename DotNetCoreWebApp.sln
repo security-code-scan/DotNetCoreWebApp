@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWebApp", "DotNetCoreWebApp\DotNetCoreWebApp.csproj", "{5E382B32-479F-4BEC-8287-F79587136EFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWebApp2", "DotNetCoreWebApp2\DotNetCoreWebApp2.csproj", "{A44A6E66-48AB-4708-9D88-55A602415603}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E382B32-479F-4BEC-8287-F79587136EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E382B32-479F-4BEC-8287-F79587136EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E382B32-479F-4BEC-8287-F79587136EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E382B32-479F-4BEC-8287-F79587136EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44A6E66-48AB-4708-9D88-55A602415603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44A6E66-48AB-4708-9D88-55A602415603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44A6E66-48AB-4708-9D88-55A602415603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44A6E66-48AB-4708-9D88-55A602415603}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8BEE828-C888-49AE-A239-F6CBDD4DFCD3}
+	EndGlobalSection
+EndGlobal

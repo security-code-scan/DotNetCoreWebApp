@@ -1,0 +1,18 @@
+on:
+  push:
+
+jobs:
+  SCS:
+    runs-on: ubuntu-latest
+    steps:     
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          dotnet build /p:ErrorLog=analysis.sarif
+        
+      - name: Convert sarif for uploading to GitHub
+        uses: security-code-scan/security-code-scan-results-action@main
+        
+      - name: Upload sarif	
+        uses: github/codeql-action/upload-sarif@v1
