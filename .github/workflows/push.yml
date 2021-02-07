@@ -1,5 +1,7 @@
 on:
   push:
+  schedule:
+    - cron: '12 9 * * 4'
 
 jobs:
   SCS:
