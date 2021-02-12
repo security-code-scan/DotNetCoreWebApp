@@ -15,6 +15,7 @@ jobs:
 
       - name: Build
         run: |
+          dotnet restore
           dotnet build /p:ErrorLog=analysis.sarif
         
       - name: Convert sarif for uploading to GitHub
