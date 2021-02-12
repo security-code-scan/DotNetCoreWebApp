@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <ErrorLog>analysis.sarif</ErrorLog>
+  </PropertyGroup>
+
 </Project>
