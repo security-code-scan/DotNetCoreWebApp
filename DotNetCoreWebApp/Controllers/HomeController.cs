@@ -30,6 +30,13 @@ namespace DotNetCoreWebApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult DoWork(string input)
+        {
+            //Do an action in the context of the logged in user
+            return new JsonResult(new { result = "Success" });
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
