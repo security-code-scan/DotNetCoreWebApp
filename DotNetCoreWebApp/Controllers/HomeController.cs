@@ -37,6 +37,15 @@ namespace DotNetCoreWebApp.Controllers
             return new JsonResult(new { result = "Success" });
         }
 
+        [HttpGet]
+        public ActionResult LogItem(string input)
+        {
+            _logger.LogWarning(input + " log in requested.");
+            
+            //Do an action in the context of the logged in user
+            return new JsonResult(new { result = "Success" });
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

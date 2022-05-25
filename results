@@ -1,0 +1,2249 @@
+{
+  "$schema" : "https://json.schemastore.org/sarif-2.1.0.json",
+  "version" : "2.1.0",
+  "runs" : [ {
+    "tool" : {
+      "driver" : {
+        "name" : "CodeQL",
+        "organization" : "GitHub",
+        "semanticVersion" : "2.8.4",
+        "notifications" : [ {
+          "id" : "cs/diagnostics/extraction-errors",
+          "name" : "cs/diagnostics/extraction-errors",
+          "shortDescription" : {
+            "text" : "Extraction errors"
+          },
+          "fullDescription" : {
+            "text" : "List all errors reported by the extractor or the compiler. Extractor errors are limited to those files where there are no compilation errors."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "description" : "List all errors reported by the extractor or the compiler. Extractor errors are\n              limited to those files where there are no compilation errors.",
+            "id" : "cs/diagnostics/extraction-errors",
+            "kind" : "diagnostic",
+            "name" : "Extraction errors"
+          }
+        }, {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "name" : "cs/diagnostics/successfully-extracted-files",
+          "shortDescription" : {
+            "text" : "Successfully extracted files"
+          },
+          "fullDescription" : {
+            "text" : "A list of all files in the source code directory that were extracted without encountering an extraction or compiler error in the file."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "description" : "A list of all files in the source code directory that were extracted\n              without encountering an extraction or compiler error in the file.",
+            "id" : "cs/diagnostics/successfully-extracted-files",
+            "kind" : "diagnostic",
+            "name" : "Successfully extracted files"
+          }
+        } ],
+        "rules" : [ {
+          "id" : "cs/web/debug-binary",
+          "name" : "cs/web/debug-binary",
+          "shortDescription" : {
+            "text" : "Creating an ASP.NET debug binary may reveal sensitive information"
+          },
+          "fullDescription" : {
+            "text" : "ASP.NET projects should not produce debug binaries when deploying to production as debug builds provide additional information useful to a malicious attacker."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "maintainability", "frameworks/asp.net", "external/cwe/cwe-11", "external/cwe/cwe-532" ],
+            "description" : "ASP.NET projects should not produce debug binaries when deploying to production as\n              debug builds provide additional information useful to a malicious attacker.",
+            "id" : "cs/web/debug-binary",
+            "kind" : "problem",
+            "name" : "Creating an ASP.NET debug binary may reveal sensitive information",
+            "precision" : "very-high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/path-injection",
+          "name" : "cs/path-injection",
+          "shortDescription" : {
+            "text" : "Uncontrolled data used in path expression"
+          },
+          "fullDescription" : {
+            "text" : "Accessing paths influenced by users can allow an attacker to access unexpected resources."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-022", "external/cwe/cwe-023", "external/cwe/cwe-036", "external/cwe/cwe-073", "external/cwe/cwe-099" ],
+            "description" : "Accessing paths influenced by users can allow an attacker to access unexpected resources.",
+            "id" : "cs/path-injection",
+            "kind" : "path-problem",
+            "name" : "Uncontrolled data used in path expression",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/zipslip",
+          "name" : "cs/zipslip",
+          "shortDescription" : {
+            "text" : "Arbitrary file write during zip extraction (\"Zip Slip\")"
+          },
+          "fullDescription" : {
+            "text" : "Extracting files from a malicious zip archive without validating that the destination file path is within the destination directory can cause files outside the destination directory to be overwritten."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-022" ],
+            "description" : "Extracting files from a malicious zip archive without validating that the\n              destination file path is within the destination directory can cause files outside\n              the destination directory to be overwritten.",
+            "id" : "cs/zipslip",
+            "kind" : "path-problem",
+            "name" : "Arbitrary file write during zip extraction (\"Zip Slip\")",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/command-line-injection",
+          "name" : "cs/command-line-injection",
+          "shortDescription" : {
+            "text" : "Uncontrolled command line"
+          },
+          "fullDescription" : {
+            "text" : "Using externally controlled strings in a command line may allow a malicious user to change the meaning of the command."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-078", "external/cwe/cwe-088" ],
+            "description" : "Using externally controlled strings in a command line may allow a malicious\n              user to change the meaning of the command.",
+            "id" : "cs/command-line-injection",
+            "kind" : "path-problem",
+            "name" : "Uncontrolled command line",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/web/xss",
+          "name" : "cs/web/xss",
+          "shortDescription" : {
+            "text" : "Cross-site scripting"
+          },
+          "fullDescription" : {
+            "text" : "Writing user input directly to a web page allows for a cross-site scripting vulnerability."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-079", "external/cwe/cwe-116" ],
+            "description" : "Writing user input directly to a web page\n              allows for a cross-site scripting vulnerability.",
+            "id" : "cs/web/xss",
+            "kind" : "path-problem",
+            "name" : "Cross-site scripting",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.1"
+          }
+        }, {
+          "id" : "cs/sql-injection",
+          "name" : "cs/sql-injection",
+          "shortDescription" : {
+            "text" : "SQL query built from user-controlled sources"
+          },
+          "fullDescription" : {
+            "text" : "Building a SQL query from user-controlled sources is vulnerable to insertion of malicious SQL code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-089" ],
+            "description" : "Building a SQL query from user-controlled sources is vulnerable to insertion of\n              malicious SQL code by the user.",
+            "id" : "cs/sql-injection",
+            "kind" : "path-problem",
+            "name" : "SQL query built from user-controlled sources",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "cs/ldap-injection",
+          "name" : "cs/ldap-injection",
+          "shortDescription" : {
+            "text" : "LDAP query built from user-controlled sources"
+          },
+          "fullDescription" : {
+            "text" : "Building an LDAP query from user-controlled sources is vulnerable to insertion of malicious LDAP code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-090" ],
+            "description" : "Building an LDAP query from user-controlled sources is vulnerable to insertion of\n              malicious LDAP code by the user.",
+            "id" : "cs/ldap-injection",
+            "kind" : "path-problem",
+            "name" : "LDAP query built from user-controlled sources",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/xml-injection",
+          "name" : "cs/xml-injection",
+          "shortDescription" : {
+            "text" : "XML injection"
+          },
+          "fullDescription" : {
+            "text" : "Building an XML document from user-controlled sources is vulnerable to insertion of malicious code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-091" ],
+            "description" : "Building an XML document from user-controlled sources is vulnerable to insertion of\n              malicious code by the user.",
+            "id" : "cs/xml-injection",
+            "kind" : "problem",
+            "name" : "XML injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "cs/code-injection",
+          "name" : "cs/code-injection",
+          "shortDescription" : {
+            "text" : "Improper control of generation of code"
+          },
+          "fullDescription" : {
+            "text" : "Treating externally controlled strings as code can allow an attacker to execute malicious code."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-094", "external/cwe/cwe-095", "external/cwe/cwe-096" ],
+            "description" : "Treating externally controlled strings as code can allow an attacker to execute\n              malicious code.",
+            "id" : "cs/code-injection",
+            "kind" : "path-problem",
+            "name" : "Improper control of generation of code",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.3"
+          }
+        }, {
+          "id" : "cs/resource-injection",
+          "name" : "cs/resource-injection",
+          "shortDescription" : {
+            "text" : "Resource injection"
+          },
+          "fullDescription" : {
+            "text" : "Building a resource descriptor from untrusted user input is vulnerable to a malicious user providing an unintended resource."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-099" ],
+            "description" : "Building a resource descriptor from untrusted user input is vulnerable to a\n              malicious user providing an unintended resource.",
+            "id" : "cs/resource-injection",
+            "kind" : "path-problem",
+            "name" : "Resource injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/assembly-path-injection",
+          "name" : "cs/assembly-path-injection",
+          "shortDescription" : {
+            "text" : "Assembly path injection"
+          },
+          "fullDescription" : {
+            "text" : "Loading a .NET assembly based on a path constructed from user-controlled sources may allow a malicious user to load code which modifies the program in unintended ways."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-114" ],
+            "description" : "Loading a .NET assembly based on a path constructed from user-controlled sources\n              may allow a malicious user to load code which modifies the program in unintended\n              ways.",
+            "id" : "cs/assembly-path-injection",
+            "kind" : "problem",
+            "name" : "Assembly path injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.2"
+          }
+        }, {
+          "id" : "cs/log-forging",
+          "name" : "cs/log-forging",
+          "shortDescription" : {
+            "text" : "Log entries created from user input"
+          },
+          "fullDescription" : {
+            "text" : "Building log entries from user-controlled sources is vulnerable to insertion of forged log entries by a malicious user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-117" ],
+            "description" : "Building log entries from user-controlled sources is vulnerable to\n              insertion of forged log entries by a malicious user.",
+            "id" : "cs/log-forging",
+            "kind" : "path-problem",
+            "name" : "Log entries created from user input",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.8"
+          }
+        }, {
+          "id" : "cs/unvalidated-local-pointer-arithmetic",
+          "name" : "cs/unvalidated-local-pointer-arithmetic",
+          "shortDescription" : {
+            "text" : "Unvalidated local pointer arithmetic"
+          },
+          "fullDescription" : {
+            "text" : "Using the result of a virtual method call in pointer arithmetic without validation is dangerous because the method may be overridden by a subtype to return any value."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-119", "external/cwe/cwe-120", "external/cwe/cwe-122", "external/cwe/cwe-788" ],
+            "description" : "Using the result of a virtual method call in pointer arithmetic without\n              validation is dangerous because the method may be overridden by a subtype\n              to return any value.",
+            "id" : "cs/unvalidated-local-pointer-arithmetic",
+            "kind" : "problem",
+            "name" : "Unvalidated local pointer arithmetic",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "9.3"
+          }
+        }, {
+          "id" : "cs/uncontrolled-format-string",
+          "name" : "cs/uncontrolled-format-string",
+          "shortDescription" : {
+            "text" : "Uncontrolled format string"
+          },
+          "fullDescription" : {
+            "text" : "Passing untrusted format strings from remote data sources can throw exceptions and cause a denial of service."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-134" ],
+            "description" : "Passing untrusted format strings from remote data sources can throw exceptions\n              and cause a denial of service.",
+            "id" : "cs/uncontrolled-format-string",
+            "kind" : "path-problem",
+            "name" : "Uncontrolled format string",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.3"
+          }
+        }, {
+          "id" : "cs/sensitive-data-transmission",
+          "name" : "cs/sensitive-data-transmission",
+          "shortDescription" : {
+            "text" : "Information exposure through transmitted data"
+          },
+          "fullDescription" : {
+            "text" : "Transmitting sensitive information to the user is a potential security risk."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-201" ],
+            "description" : "Transmitting sensitive information to the user is a potential security risk.",
+            "id" : "cs/sensitive-data-transmission",
+            "kind" : "path-problem",
+            "name" : "Information exposure through transmitted data",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "4.3"
+          }
+        }, {
+          "id" : "cs/information-exposure-through-exception",
+          "name" : "cs/information-exposure-through-exception",
+          "shortDescription" : {
+            "text" : "Information exposure through an exception"
+          },
+          "fullDescription" : {
+            "text" : "Leaking information about an exception, such as messages and stack traces, to an external user can expose implementation details that are useful to an attacker for developing a subsequent exploit."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-209", "external/cwe/cwe-497" ],
+            "description" : "Leaking information about an exception, such as messages and stack traces, to an\n              external user can expose implementation details that are useful to an attacker for\n              developing a subsequent exploit.",
+            "id" : "cs/information-exposure-through-exception",
+            "kind" : "path-problem",
+            "name" : "Information exposure through an exception",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "5.4"
+          }
+        }, {
+          "id" : "cs/web/missing-global-error-handler",
+          "name" : "cs/web/missing-global-error-handler",
+          "shortDescription" : {
+            "text" : "Missing global error handler"
+          },
+          "fullDescription" : {
+            "text" : "ASP.NET applications should not set the 'customError' mode to \"off\" without providing a global error handler, otherwise they may leak exception information."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-12", "external/cwe/cwe-248" ],
+            "description" : "ASP.NET applications should not set the 'customError' mode to \"off\" without providing\n              a global error handler, otherwise they may leak exception information.",
+            "id" : "cs/web/missing-global-error-handler",
+            "kind" : "problem",
+            "name" : "Missing global error handler",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/cleartext-storage-of-sensitive-information",
+          "name" : "cs/cleartext-storage-of-sensitive-information",
+          "shortDescription" : {
+            "text" : "Clear text storage of sensitive information"
+          },
+          "fullDescription" : {
+            "text" : "Sensitive information stored without encryption or hashing can expose it to an attacker."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-312", "external/cwe/cwe-315", "external/cwe/cwe-359" ],
+            "description" : "Sensitive information stored without encryption or hashing can expose it to an\n              attacker.",
+            "id" : "cs/cleartext-storage-of-sensitive-information",
+            "kind" : "path-problem",
+            "name" : "Clear text storage of sensitive information",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/web/missing-token-validation",
+          "name" : "cs/web/missing-token-validation",
+          "shortDescription" : {
+            "text" : "Missing cross-site request forgery token validation"
+          },
+          "fullDescription" : {
+            "text" : "Handling a POST request without verifying that the request came from the user allows a malicious attacker to submit a request on behalf of the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-352" ],
+            "description" : "Handling a POST request without verifying that the request came from the user\n              allows a malicious attacker to submit a request on behalf of the user.",
+            "id" : "cs/web/missing-token-validation",
+            "kind" : "problem",
+            "name" : "Missing cross-site request forgery token validation",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "cs/exposure-of-sensitive-information",
+          "name" : "cs/exposure-of-sensitive-information",
+          "shortDescription" : {
+            "text" : "Exposure of private information"
+          },
+          "fullDescription" : {
+            "text" : "If private information is written to an external location, it may be accessible by unauthorized persons."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-359" ],
+            "description" : "If private information is written to an external location, it may be accessible by\n              unauthorized persons.",
+            "id" : "cs/exposure-of-sensitive-information",
+            "kind" : "path-problem",
+            "name" : "Exposure of private information",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.5"
+          }
+        }, {
+          "id" : "cs/session-reuse",
+          "name" : "cs/session-reuse",
+          "shortDescription" : {
+            "text" : "Failure to abandon session"
+          },
+          "fullDescription" : {
+            "text" : "Reusing an existing session as a different user could allow an attacker to access someone else's account by using their session."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-384" ],
+            "description" : "Reusing an existing session as a different user could allow\n              an attacker to access someone else's account by using\n              their session.",
+            "id" : "cs/session-reuse",
+            "kind" : "problem",
+            "name" : "Failure to abandon session",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "cs/web/missing-x-frame-options",
+          "name" : "cs/web/missing-x-frame-options",
+          "shortDescription" : {
+            "text" : "Missing X-Frame-Options HTTP header"
+          },
+          "fullDescription" : {
+            "text" : "If the 'X-Frame-Options' setting is not provided, a malicious user may be able to overlay their own UI on top of the site by using an iframe."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-451", "external/cwe/cwe-829" ],
+            "description" : "If the 'X-Frame-Options' setting is not provided, a malicious user may be able to\n              overlay their own UI on top of the site by using an iframe.",
+            "id" : "cs/web/missing-x-frame-options",
+            "kind" : "problem",
+            "name" : "Missing X-Frame-Options HTTP header",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/deserialized-delegate",
+          "name" : "cs/deserialized-delegate",
+          "shortDescription" : {
+            "text" : "Deserialized delegate"
+          },
+          "fullDescription" : {
+            "text" : "Deserializing a delegate allows for remote code execution when an attacker can control the serialized data."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-502" ],
+            "description" : "Deserializing a delegate allows for remote code execution when an\n              attacker can control the serialized data.",
+            "id" : "cs/deserialized-delegate",
+            "kind" : "problem",
+            "name" : "Deserialized delegate",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/unsafe-deserialization-untrusted-input",
+          "name" : "cs/unsafe-deserialization-untrusted-input",
+          "shortDescription" : {
+            "text" : "Deserialization of untrusted data"
+          },
+          "fullDescription" : {
+            "text" : "Calling an unsafe deserializer with data controlled by an attacker can lead to denial of service and other security problems."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-502" ],
+            "description" : "Calling an unsafe deserializer with data controlled by an attacker\n              can lead to denial of service and other security problems.",
+            "id" : "cs/unsafe-deserialization-untrusted-input",
+            "kind" : "path-problem",
+            "name" : "Deserialization of untrusted data",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/web/directory-browse-enabled",
+          "name" : "cs/web/directory-browse-enabled",
+          "shortDescription" : {
+            "text" : "ASP.NET config file enables directory browsing"
+          },
+          "fullDescription" : {
+            "text" : "Directory browsing should not be enabled in production as it can leak sensitive information."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-548" ],
+            "description" : "Directory browsing should not be enabled in production as it can leak sensitive information.",
+            "id" : "cs/web/directory-browse-enabled",
+            "kind" : "problem",
+            "name" : "ASP.NET config file enables directory browsing",
+            "precision" : "very-high",
+            "problem.severity" : "warning",
+            "security-severity" : "6.5"
+          }
+        }, {
+          "id" : "cs/web/unvalidated-url-redirection",
+          "name" : "cs/web/unvalidated-url-redirection",
+          "shortDescription" : {
+            "text" : "URL redirection from remote source"
+          },
+          "fullDescription" : {
+            "text" : "URL redirection based on unvalidated user input may cause redirection to malicious web sites."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-601" ],
+            "description" : "URL redirection based on unvalidated user input\n              may cause redirection to malicious web sites.",
+            "id" : "cs/web/unvalidated-url-redirection",
+            "kind" : "path-problem",
+            "name" : "URL redirection from remote source",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.1"
+          }
+        }, {
+          "id" : "cs/xml/insecure-dtd-handling",
+          "name" : "cs/xml/insecure-dtd-handling",
+          "shortDescription" : {
+            "text" : "Untrusted XML is read insecurely"
+          },
+          "fullDescription" : {
+            "text" : "Untrusted XML is read with an insecure resolver and DTD processing enabled."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-611", "external/cwe/cwe-827", "external/cwe/cwe-776" ],
+            "description" : "Untrusted XML is read with an insecure resolver and DTD processing enabled.",
+            "id" : "cs/xml/insecure-dtd-handling",
+            "kind" : "path-problem",
+            "name" : "Untrusted XML is read insecurely",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.1"
+          }
+        }, {
+          "id" : "cs/web/requiressl-not-set",
+          "name" : "cs/web/requiressl-not-set",
+          "shortDescription" : {
+            "text" : "'requireSSL' attribute is not set to true"
+          },
+          "fullDescription" : {
+            "text" : "Omitting the 'requireSSL' attribute allows data to be transmitted insecurely using HTTP. Always set 'requireSSL' to 'true' to ensure that HTTPS is used at all times."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-319", "external/cwe/cwe-614" ],
+            "description" : "Omitting the 'requireSSL' attribute allows data to be transmitted insecurely\n              using HTTP. Always set 'requireSSL' to 'true' to ensure that HTTPS\n              is used at all times.",
+            "id" : "cs/web/requiressl-not-set",
+            "kind" : "problem",
+            "name" : "'requireSSL' attribute is not set to true",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/xml/xpath-injection",
+          "name" : "cs/xml/xpath-injection",
+          "shortDescription" : {
+            "text" : "XPath injection"
+          },
+          "fullDescription" : {
+            "text" : "Building an XPath expression from user-controlled sources is vulnerable to insertion of malicious code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-643" ],
+            "description" : "Building an XPath expression from user-controlled sources is vulnerable to insertion of\n              malicious code by the user.",
+            "id" : "cs/xml/xpath-injection",
+            "kind" : "path-problem",
+            "name" : "XPath injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "cs/redos",
+          "name" : "cs/redos",
+          "shortDescription" : {
+            "text" : "Denial of Service from comparison of user input against expensive regex"
+          },
+          "fullDescription" : {
+            "text" : "User input should not be matched against a regular expression that could require exponential time on certain input."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-1333", "external/cwe/cwe-730", "external/cwe/cwe-400" ],
+            "description" : "User input should not be matched against a regular expression that could require\n              exponential time on certain input.",
+            "id" : "cs/redos",
+            "kind" : "path-problem",
+            "name" : "Denial of Service from comparison of user input against expensive regex",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/regex-injection",
+          "name" : "cs/regex-injection",
+          "shortDescription" : {
+            "text" : "Regular expression injection"
+          },
+          "fullDescription" : {
+            "text" : "User input should not be used in regular expressions without first being escaped, otherwise a malicious user may be able to provide a regex that could require exponential time on certain inputs."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-730", "external/cwe/cwe-400" ],
+            "description" : "User input should not be used in regular expressions without first being escaped,\n              otherwise a malicious user may be able to provide a regex that could require\n              exponential time on certain inputs.",
+            "id" : "cs/regex-injection",
+            "kind" : "path-problem",
+            "name" : "Regular expression injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/user-controlled-bypass",
+          "name" : "cs/user-controlled-bypass",
+          "shortDescription" : {
+            "text" : "User-controlled bypass of sensitive method"
+          },
+          "fullDescription" : {
+            "text" : "User-controlled bypassing of sensitive methods may allow attackers to avoid passing through authentication systems."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-807", "external/cwe/cwe-247", "external/cwe/cwe-350" ],
+            "description" : "User-controlled bypassing of sensitive methods may allow attackers to avoid\n              passing through authentication systems.",
+            "id" : "cs/user-controlled-bypass",
+            "kind" : "path-problem",
+            "name" : "User-controlled bypass of sensitive method",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/web/broad-cookie-domain",
+          "name" : "cs/web/broad-cookie-domain",
+          "shortDescription" : {
+            "text" : "Cookie security: overly broad domain"
+          },
+          "fullDescription" : {
+            "text" : "Finds cookies with an overly broad domain."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-287" ],
+            "description" : "Finds cookies with an overly broad domain.",
+            "id" : "cs/web/broad-cookie-domain",
+            "kind" : "problem",
+            "name" : "Cookie security: overly broad domain",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "9.3"
+          }
+        }, {
+          "id" : "cs/web/broad-cookie-path",
+          "name" : "cs/web/broad-cookie-path",
+          "shortDescription" : {
+            "text" : "Cookie security: overly broad path"
+          },
+          "fullDescription" : {
+            "text" : "Finds cookies with an overly broad path."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-287" ],
+            "description" : "Finds cookies with an overly broad path.",
+            "id" : "cs/web/broad-cookie-path",
+            "kind" : "problem",
+            "name" : "Cookie security: overly broad path",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "9.3"
+          }
+        }, {
+          "id" : "cs/ecb-encryption",
+          "name" : "cs/ecb-encryption",
+          "shortDescription" : {
+            "text" : "Encryption using ECB"
+          },
+          "fullDescription" : {
+            "text" : "Highlights uses of the encryption mode 'CipherMode.ECB'. This mode should normally not be used because it is vulnerable to replay attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "description" : "Highlights uses of the encryption mode 'CipherMode.ECB'. This mode should normally not be used because it is vulnerable to replay attacks.",
+            "id" : "cs/ecb-encryption",
+            "kind" : "problem",
+            "name" : "Encryption using ECB",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/web/disabled-header-checking",
+          "name" : "cs/web/disabled-header-checking",
+          "shortDescription" : {
+            "text" : "Header checking disabled"
+          },
+          "fullDescription" : {
+            "text" : "Finds places where header checking is disabled."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-113" ],
+            "description" : "Finds places where header checking is disabled.",
+            "id" : "cs/web/disabled-header-checking",
+            "kind" : "problem",
+            "name" : "Header checking disabled",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "6.1"
+          }
+        }, {
+          "id" : "cs/inadequate-rsa-padding",
+          "name" : "cs/inadequate-rsa-padding",
+          "shortDescription" : {
+            "text" : "Weak encryption: inadequate RSA padding"
+          },
+          "fullDescription" : {
+            "text" : "Finds uses of RSA encryption with inadequate padding."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327", "external/cwe/cwe-780" ],
+            "description" : "Finds uses of RSA encryption with inadequate padding.",
+            "id" : "cs/inadequate-rsa-padding",
+            "kind" : "problem",
+            "name" : "Weak encryption: inadequate RSA padding",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/insecure-randomness",
+          "name" : "cs/insecure-randomness",
+          "shortDescription" : {
+            "text" : "Insecure randomness"
+          },
+          "fullDescription" : {
+            "text" : "Using a cryptographically weak pseudo-random number generator to generate a security sensitive value may allow an attacker to predict what sensitive value will be generated."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-338" ],
+            "description" : "Using a cryptographically weak pseudo-random number generator to generate a\n              security sensitive value may allow an attacker to predict what sensitive value will\n              be generated.",
+            "id" : "cs/insecure-randomness",
+            "kind" : "path-problem",
+            "name" : "Insecure randomness",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.8"
+          }
+        }, {
+          "id" : "cs/insufficient-key-size",
+          "name" : "cs/insufficient-key-size",
+          "shortDescription" : {
+            "text" : "Weak encryption: Insufficient key size"
+          },
+          "fullDescription" : {
+            "text" : "Finds uses of encryption algorithms with too small a key size"
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-326" ],
+            "description" : "Finds uses of encryption algorithms with too small a key size",
+            "id" : "cs/insufficient-key-size",
+            "kind" : "problem",
+            "name" : "Weak encryption: Insufficient key size",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/web/persistent-cookie",
+          "name" : "cs/web/persistent-cookie",
+          "shortDescription" : {
+            "text" : "Cookie security: persistent cookie"
+          },
+          "fullDescription" : {
+            "text" : "Persistent cookies are vulnerable to attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-539" ],
+            "description" : "Persistent cookies are vulnerable to attacks.",
+            "id" : "cs/web/persistent-cookie",
+            "kind" : "problem",
+            "name" : "Cookie security: persistent cookie",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "8.2"
+          }
+        }, {
+          "id" : "cs/weak-encryption",
+          "name" : "cs/weak-encryption",
+          "shortDescription" : {
+            "text" : "Weak encryption"
+          },
+          "fullDescription" : {
+            "text" : "Finds uses of encryption algorithms that are weak and obsolete"
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "description" : "Finds uses of encryption algorithms that are weak and obsolete",
+            "id" : "cs/weak-encryption",
+            "kind" : "problem",
+            "name" : "Weak encryption",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "cs/summary/lines-of-code",
+          "name" : "cs/summary/lines-of-code",
+          "shortDescription" : {
+            "text" : "Total lines of code in the database"
+          },
+          "fullDescription" : {
+            "text" : "The total number of lines of code across all files. This is a useful metric of the size of a database. For all files that were seen during the build, this query counts the lines of code, excluding whitespace or comments."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "tags" : [ "summary", "lines-of-code" ],
+            "description" : "The total number of lines of code across all files. This is a useful metric of the size of a database. For all files that were seen during the build, this query counts the lines of code, excluding whitespace or comments.",
+            "id" : "cs/summary/lines-of-code",
+            "kind" : "metric",
+            "name" : "Total lines of code in the database"
+          }
+        } ]
+      },
+      "extensions" : [ {
+        "name" : "legacy-upgrades",
+        "semanticVersion" : "0.0.0",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/legacy-upgrades/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/legacy-upgrades/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-queries",
+        "semanticVersion" : "0.0.11+30bd1a6eb65f64a310365b573fc67aa3b0f24ef6",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-queries/0.0.11/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-queries/0.0.11/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-all",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-all/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-all/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-all",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-all/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-all/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-queries",
+        "semanticVersion" : "0.0.13+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-queries/0.0.13/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-queries/0.0.13/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-queries",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-queries/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-queries/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-all",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-all/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-all/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-queries",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-queries/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-queries/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/python-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-all",
+        "semanticVersion" : "0.0.13+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-all/0.0.13/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-all/0.0.13/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/suite-helpers",
+        "semanticVersion" : "0.0.3+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/suite-helpers/0.0.3/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/suite-helpers/0.0.3/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-all",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-all/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-all/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-all",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-all/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/java-all/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-queries",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-queries/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/cpp-queries/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-queries",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-queries/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/csharp-queries/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/javascript-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-examples",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-examples/0.0.0/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-examples/0.0.0/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-queries",
+        "semanticVersion" : "0.0.12+e41bbfd931df1f52d6cba38830046a9fdb4bd00f",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-queries/0.0.12/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/ruby-queries/0.0.12/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-all",
+        "semanticVersion" : "0.0.11+30bd1a6eb65f64a310365b573fc67aa3b0f24ef6",
+        "locations" : [ {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-all/0.0.11/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///opt/homebrew/Caskroom/codeql-bundle/2.8.4/codeql/qlpacks/codeql/go-all/0.0.11/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      } ]
+    },
+    "invocations" : [ {
+      "toolExecutionNotifications" : [ {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/Controllers/HomeController.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 0
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/Models/ErrorViewModel.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 1
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/Program.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 2
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/Startup.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 3
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 4
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.AssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 5
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.RazorAssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 6
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.RazorTargetAssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 7
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 8
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 9
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 10
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 11
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 12
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 13
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 14
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/Controllers/HomeController.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 15
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/Models/ErrorViewModel.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 16
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/Program.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 17
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/Startup.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 18
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 19
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.AssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 20
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.RazorAssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 21
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.RazorTargetAssemblyInfo.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 22
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 23
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 24
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 25
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 26
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 27
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 28
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 29
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "cs/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      } ],
+      "executionSuccessful" : true
+    } ],
+    "artifacts" : [ {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/Controllers/HomeController.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 0
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/Models/ErrorViewModel.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 1
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/Program.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 2
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/Startup.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 3
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 4
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.AssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 5
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.RazorAssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 6
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/DotNetCoreWebApp.RazorTargetAssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 7
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 8
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 9
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 10
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 11
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 12
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 13
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 14
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/Controllers/HomeController.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 15
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/Models/ErrorViewModel.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 16
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/Program.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 17
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/Startup.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 18
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 19
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.AssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 20
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.RazorAssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 21
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/DotNetCoreWebApp2.RazorTargetAssemblyInfo.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 22
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 23
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 24
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 25
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 26
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 27
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 28
+      }
+    }, {
+      "location" : {
+        "uri" : "DotNetCoreWebApp2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 29
+      }
+    } ],
+    "results" : [ ],
+    "columnKind" : "utf16CodeUnits",
+    "properties" : {
+      "metricResults" : [ {
+        "rule" : {
+          "id" : "cs/summary/lines-of-code",
+          "index" : 41
+        },
+        "ruleId" : "cs/summary/lines-of-code",
+        "ruleIndex" : 41,
+        "value" : 1827,
+        "baseline" : 233
+      } ],
+      "semmle.formatSpecifier" : "sarif-latest"
+    }
+  } ]
+}
