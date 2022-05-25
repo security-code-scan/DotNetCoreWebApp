@@ -70,15 +70,27 @@ namespace DotNetCoreWebApp.Controllers
 
 
         [HttpPost]
-        public IActionResult ProcessRequest2([FromForm]string nameformat)
+        public IActionResult ProcessRequest2([FromForm]string nameformatFromForm)
         {
-            string format = nameformat;
+            string format = nameformatFromForm;
             string Surname = "test", Forenames="test", FormattedName;
             // BAD: Uncontrolled format string.
             FormattedName = string.Format(format, Surname, Forenames);
 
             return View(new ErrorViewModel { RequestId = FormattedName });
         }
+
+        [HttpPost]
+        public IActionResult ProcessRequestVM(ErrorViewModel model)
+        {
+            string format = model.RequestId;
+            string Surname = "test", Forenames="test", FormattedName;
+            // BAD: Uncontrolled format string.
+            FormattedName = string.Format(format, Surname, Forenames);
+
+            return View(new ErrorViewModel { RequestId = FormattedName });
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
