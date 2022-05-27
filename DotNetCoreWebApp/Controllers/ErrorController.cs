@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using DotNetCoreWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -81,6 +85,26 @@ public class ErrorController : ControllerBase
             FormattedName = string.Format(format, Surname, Forenames);
 
             return new JsonResult(new { result = FormattedName });
+        }
+
+        [HttpPost]
+        public IActionResult PostDeserializeSimple(string unsafeDeserialize)
+        {
+            Byte[] bytes = Encoding.UTF8.GetBytes(unsafeDeserialize);
+            BinaryFormatter formatter = new BinaryFormatter();
+            var myobj =  formatter.Deserialize(new MemoryStream(bytes));
+
+            return new JsonResult(new { result = myobj });
+        }
+
+        [HttpPost]
+        public IActionResult PostDeserializeComplex([FromForm]ErrorViewModel modelUnsafeDeserialize)
+        {            
+            Byte[] bytes = Encoding.UTF8.GetBytes(modelUnsafeDeserialize.RequestId);
+            BinaryFormatter formatter = new BinaryFormatter();
+            var myobj =  formatter.Deserialize(new MemoryStream(bytes));
+
+            return new JsonResult(new { result = myobj });
         }
 
 }
