@@ -106,5 +106,20 @@ public class ErrorController : ControllerBase
 
             return new JsonResult(new { result = myobj });
         }
+        
+        [HttpPost]
+        public IActionResult BadAuthenticatedPost(string password)
+        {   
+            //string password = ctx.Request.QueryString["password"];
 
+            // BAD: Inbound authentication made by comparison to string literal
+            if (password == "myPa55word")
+            {
+                return new JsonResult(new { result = "success" });
+            }
+            else
+            {
+                return new JsonResult(new { result = "failure" });
+            }
+        }       
 }
