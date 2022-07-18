@@ -1,4 +1,6 @@
 ﻿using DotNetCoreWebApp.Models;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,10 +16,12 @@ namespace DotNetCoreWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IValidator<ErrorViewModel> _validator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IValidator<ErrorViewModel> validator)
         {
             _logger = logger;
+            _validator = validator;
         }
 
         public IActionResult Index()
@@ -83,6 +87,20 @@ namespace DotNetCoreWebApp.Controllers
         [HttpPost]
         public IActionResult ProcessRequestVM(ErrorViewModel model)
         {
+            ValidationResult result = _validator.Validate(model);
+
+            if (!result.IsValid)
+            {
+                // Copy the validation results into ModelState.
+                // ASP.NET uses the ModelState collection to populate 
+                // error messages in the View.
+                result.AddToModelState(this.ModelState);
+
+                // re-render the view when validation failed.
+                return View("Create", model);
+            }
+
+
             string format = model.RequestId;
             string Surname = "test", Forenames="test", FormattedName;
             // BAD: Uncontrolled format string.
