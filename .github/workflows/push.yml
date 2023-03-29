@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '12 9 * * 4'
 
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
 jobs:
   SCS:
     runs-on: ${{ matrix.os }}
