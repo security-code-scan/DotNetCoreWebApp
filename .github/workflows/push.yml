@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - if: strategy.matrix.os != 'windows-latest'
+      - if: $ {{ strategy.matrix.os != 'windows-latest' }}
         uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
