@@ -16,7 +16,7 @@ jobs:
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up projects
         uses: security-code-scan/security-code-scan-add-action@main
